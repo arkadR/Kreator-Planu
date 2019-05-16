@@ -11,14 +11,12 @@ namespace KreatorPlanu
 	public partial class Form1 : Form
 	{
 		public static int brickWidth = 150;
-
-		DataBase data = new DataBase();
-		HashSet<Subject> subjects = new HashSet<Subject>();
-		List<Label> textLabels = new List<Label>();
+        readonly DataBase data = new DataBase();
+        readonly List<Label> textLabels = new List<Label>();
 		bool loaded = false;
 		string sheetsUrl;
 
-		public Form1()
+        public Form1()
 		{
 			InitializeComponent();
 
@@ -61,11 +59,8 @@ namespace KreatorPlanu
 				while (intersects);
 			}
 
-			//Add buttons to the panel
-			for (int i = 0; i < data.blocks.Count; i++)
-			{
-				panel3.Controls.Add(data.blocks[i]);
-			}
+            //Add buttons to the panel
+            data.blocks.ForEach(b => panel3.Controls.Add(b));
 
 			for (int i = 0; i < 5; i++)
 			{
@@ -96,7 +91,7 @@ namespace KreatorPlanu
 
 		}
 
-		private void panel3_Paint(object sender, PaintEventArgs e)
+		private void Panel3_Paint(object sender, PaintEventArgs e)
 		{
 			if (loaded)
 			{
@@ -117,7 +112,7 @@ namespace KreatorPlanu
 			base.OnPaint(e);
 		}
 
-		private void button_generate_Click(object sender, EventArgs e) //GENERATE THE CODES AND INSERT THEM TO TEXT BOX
+		private void Button_generate_Click(object sender, EventArgs e) //GENERATE THE CODES AND INSERT THEM TO TEXT BOX
 		{
 			List<Block> enabledBlocks = new List<Block>();
 			textBox_codes.Text = "";
@@ -138,7 +133,7 @@ namespace KreatorPlanu
 			}
 		}
 
-		private void button_export_Click(object sender, EventArgs e)
+		private void Button_export_Click(object sender, EventArgs e)
 		{
 			Stream stream;
 			using (SaveFileDialog sfd = new SaveFileDialog { Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*", RestoreDirectory = true, FileName = "kody"})
@@ -172,7 +167,7 @@ namespace KreatorPlanu
 			}
 		}
 
-		private void button_import_Click(object sender, EventArgs e)
+		private void Button_import_Click(object sender, EventArgs e)
 		{
 			string dir = "";
 
@@ -187,10 +182,7 @@ namespace KreatorPlanu
 					return;
 				}
 			}
-			foreach (Block b in data.blocks)
-			{
-				b.OnDeactivate();
-			}
+            data.blocks.ForEach(b => b.OnDeactivate());
 			int ile = 0;
 			foreach (string line in File.ReadLines(dir))
 			{
@@ -207,7 +199,7 @@ namespace KreatorPlanu
 			label_debug.Text = string.Format("Pomyślnie zaimportowano {0} grup zajęciowych", ile);
 		}
 
-		private void button_showTable_Click(object sender, EventArgs e)
+		private void Button_showTable_Click(object sender, EventArgs e)
 		{
 			List<Block> activeBlocks = new List<Block>();
 			foreach (Block b in data.blocks)
@@ -221,7 +213,7 @@ namespace KreatorPlanu
 			week.Show();
 		}
 
-		private void button_loadCSV_Click(object sender, EventArgs e)
+		private void Button_loadCSV_Click(object sender, EventArgs e)
 		{
 			string dir;
 			
@@ -243,7 +235,7 @@ namespace KreatorPlanu
 			ArrangeData();
 		}
 
-		private void button_loadFromGoogle_Click(object sender, EventArgs e)
+		private void Button_loadFromGoogle_Click(object sender, EventArgs e)
 		{
 			string url = textBox_GoogleLink.Text;
 			if (!url.Contains("https://docs.google.com/spreadsheets/d/"))
@@ -270,14 +262,14 @@ namespace KreatorPlanu
 				Location = new Point(5, 5),
 				FlatStyle = FlatStyle.Flat
 			};
-			button_refresh.Click += button_refresh_Click;
+			button_refresh.Click += Button_refresh_Click;
 			panel3.Controls.Add(button_refresh);
 			loaded = true;
 			tableLayoutPanel3.Dispose();
 			ArrangeData();
 		}
 
-		private void button_refresh_Click(object sender, EventArgs e) 
+		private void Button_refresh_Click(object sender, EventArgs e) 
 		{
 			List<string> codes = new List<string>();
 			List<string> hiddenCodes = new List<string>();
@@ -311,10 +303,7 @@ namespace KreatorPlanu
 			foreach (string s in hiddenCodes)
 			{
 				data.subjects[s].checkBox.Checked = false;
-				foreach (Block b in data.subjects[s].blocks)
-				{
-					b.Fade();
-				}
+                data.subjects[s].blocks.ForEach(b => b.Fade());
 			}
 			foreach (string s in codes)
 			{

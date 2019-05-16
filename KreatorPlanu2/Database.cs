@@ -19,7 +19,8 @@ namespace KreatorPlanu
 				while (!reader.EndOfStream)
 				{
 					string line = reader.ReadLine();
-					string[] values = line.Split(';');					
+					char[] splitters = { ',', ';' };
+					string[] values = line.Split(splitters);					
 					blocks.Add(new Block(values, this));
 				}
 			}
@@ -41,35 +42,26 @@ namespace KreatorPlanu
 			{
 				client.Dispose();
 			}
-
-			StreamReader reader = new StreamReader("temp.json");
-			string json = reader.ReadToEnd();
-			reader.Close();
+			string json;
+			using (StreamReader reader = new StreamReader("temp.json"))
+			{
+				json = reader.ReadToEnd();
+				reader.Close();
+			}
 			File.Delete("temp.json");
 			json = json.Remove(0, json.IndexOf("{"));
 			json = json.Remove(json.Length - 2);
 			JObject parsedJson = JObject.Parse(json);
-			foreach (JProperty prop in parsedJson.Children<JProperty>())
+			JArray rows = (JArray)parsedJson["table"]["rows"];
+			foreach (JObject row in rows)
 			{
-				if (prop.Name.Equals("table"))
+				string[] s = new string[12];
+				JArray sub = (JArray)row.Last.Last;
+				for (int i = 0; i < s.Length; i++)
 				{
-					JArray rows = (JArray)prop.Last.Last.Last;
-					foreach (JObject row in rows)
-					{
-						string[] s = new string[12];
-						JArray sub = (JArray)row.Last.Last;
-
-						for (int i = 0; i < s.Length; i++)
-						{
-							s[i] = "";
-							if (sub[i].HasValues)
-							{
-								s[i] = (string)sub[i].Last;
-							}
-						}
-						blocks.Add(new Block(s, this));
-					}
+                    s[i] = sub[i].HasValues ? (string)sub[i].Last : "";
 				}
+				blocks.Add(new Block(s, this));
 			}
 			GenerateSubjects();
 			return true;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Linq;
 
 namespace KreatorPlanu
 {
@@ -20,7 +21,7 @@ namespace KreatorPlanu
 				Location = new Point(3, 0),
 				Checked = true
 			};
-			checkBox.CheckedChanged += checkBox_Changed;
+			checkBox.CheckedChanged += CheckBox_Changed;
 		}
 		public string name;
 		public List<Block> blocks = new List<Block>();
@@ -28,29 +29,17 @@ namespace KreatorPlanu
 		public Class_type Type { get; set; }
 		public CheckBox checkBox;
 
-		public void Activate()
-		{
-			Font = new Font(Font, FontStyle.Strikeout);
-		}
-		public void Deactivate()
-		{
-			Font = new Font(Font, FontStyle.Bold);
-		}
-		public void checkBox_Changed(object o, EventArgs e)
+        public void Activate() => Font = new Font(Font, FontStyle.Strikeout);
+        public void Deactivate() => Font = new Font(Font, FontStyle.Bold);
+        public void CheckBox_Changed(object o, EventArgs e)
 		{
 			if (!checkBox.Checked)
 			{
-				foreach (Block b in blocks)
-				{
-					b.Fade();
-				}
+                blocks.ForEach(b => b.Fade());
 			}
 			else
 			{
-				foreach (Block b in blocks)
-				{
-					b.UnFade();
-				}
+                blocks.ForEach(b => b.UnFade());
 			}
 		}
 
@@ -68,15 +57,8 @@ namespace KreatorPlanu
 
 		public void UpdateCount()
 		{
-			int i = 0;
-			foreach (Block b in blocks)
-			{
-				if (b.SpotsLeft <= 0)
-				{
-					i++;
-				}
-			}
-			Text = Type.ToString() + " " + name + " (" + (blocks.Count-i) + ")";
+            var spots = blocks.Count(b => b.SpotsLeft > 0);
+			Text = $"{Type} {name} ({spots})";
 		}
 	}
 }

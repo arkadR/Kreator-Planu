@@ -17,3 +17,22 @@ D:\Media\Dokumenty\Visual Studio 2017\Projects\KreatorPlanu2\KreatorPlanu2\obj\R
 D:\Media\Dokumenty\Visual Studio 2017\Projects\KreatorPlanu2\KreatorPlanu2\obj\Release\KreatorPlanu.exe
 D:\Media\Dokumenty\Visual Studio 2017\Projects\KreatorPlanu2\KreatorPlanu2\obj\Release\KreatorPlanu.pdb
 D:\Media\Dokumenty\Visual Studio 2017\Projects\KreatorPlanu2\KreatorPlanu2\obj\Release\KreatorPlanu2.csproj.CopyComplete
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\obj\Release\KreatorPlanu.exe
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\obj\Release\KreatorPlanu.pdb
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\bin\Release\KreatorPlanu.exe.config
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\bin\Release\KreatorPlanu.exe.manifest
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\bin\Release\KreatorPlanu.application
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\bin\Release\KreatorPlanu.exe
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\bin\Release\KreatorPlanu.pdb
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\bin\Release\Newtonsoft.Json.dll
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\bin\Release\Newtonsoft.Json.xml
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\obj\Release\KreatorPlanu2.csprojAssemblyReference.cache
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\obj\Release\KreatorPlanu.Form1.resources
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\obj\Release\KreatorPlanu.Properties.Resources.resources
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\obj\Release\KreatorPlanu.WeekView.resources
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\obj\Release\KreatorPlanu2.csproj.GenerateResource.cache
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\obj\Release\KreatorPlanu2.csproj.CoreCompileInputs.cache
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\obj\Release\KreatorPlanu.TrustInfo.xml
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\obj\Release\KreatorPlanu.exe.manifest
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\obj\Release\KreatorPlanu.application
+D:\repos\KreatorPlanu\Kreator-Planu\KreatorPlanu2\obj\Release\KreatorPlanu2.csproj.CopyComplete

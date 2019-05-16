@@ -43,7 +43,7 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(1484, 876);
 			this.panel1.TabIndex = 0;
-			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
 			// 
 			// button_saveImage
 			// 
@@ -55,7 +55,7 @@
 			this.button_saveImage.TabIndex = 0;
 			this.button_saveImage.Text = "Zapisz";
 			this.button_saveImage.UseVisualStyleBackColor = true;
-			this.button_saveImage.Click += new System.EventHandler(this.button_saveImage_Click);
+			this.button_saveImage.Click += new System.EventHandler(this.Button_saveImage_Click);
 			// 
 			// WeekView
 			// 

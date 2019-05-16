@@ -7,8 +7,8 @@ namespace KreatorPlanu
 {
 	public partial class WeekView : Form
 	{
-		List<Label> textLabels = new List<Label>();
-		List<Block> blocks = new List<Block>();
+        readonly List<Label> textLabels = new List<Label>();
+        readonly List<Block> blocks = new List<Block>();
 
 		public WeekView(List<Block> blockList)
 		{
@@ -16,12 +16,14 @@ namespace KreatorPlanu
 
 			for (int i = 0; i < 5; i++)
 			{
-				Label l = new Label();
-				l.Text = ((Day_name)i).ToString();
-				l.Location = new Point(50 + i * 300, 0);
-				l.Font = new Font("Arial", 24, FontStyle.Bold);
-				l.AutoSize = true;
-				panel1.Controls.Add(l);
+                Label l = new Label
+                {
+                    Text = ((Day_name)i).ToString(),
+                    Location = new Point(50 + i * 300, 0),
+                    Font = new Font("Arial", 24, FontStyle.Bold),
+                    AutoSize = true
+                };
+                panel1.Controls.Add(l);
 				for (int j = 7; j <= 20; j++)
 				{
 					l = new Label
@@ -32,7 +34,6 @@ namespace KreatorPlanu
 					};
 					textLabels.Add(l);
 					panel1.Controls.Add(l);
-
 				}
 			}
 
@@ -43,7 +44,7 @@ namespace KreatorPlanu
 					Left = Block.ToDayNumber(b.day) * 300 + 53,
 					Width = 194,
 					Top = (b.startTime.Hour - 6) * 60 + b.startTime.Minute
-			};
+			    };
 				block.FlatAppearance.BorderColor = b.Color_Deactivated;
 				block.FlatAppearance.CheckedBackColor = b.Color_Deactivated;
 				block.FlatAppearance.MouseDownBackColor = b.Color_Deactivated;
@@ -58,7 +59,7 @@ namespace KreatorPlanu
 
 		}
 
-		private void panel1_Paint(object sender, PaintEventArgs e)
+		private void Panel1_Paint(object sender, PaintEventArgs e)
 		{
 			Graphics g = e.Graphics;
 			Pen p = new Pen(Color.Gray, 1);
@@ -75,7 +76,7 @@ namespace KreatorPlanu
 			base.OnPaint(e);
 		}
 
-		private void button_saveImage_Click(object sender, EventArgs e)
+		private void Button_saveImage_Click(object sender, EventArgs e)
 		{
 			Bitmap bmp = new Bitmap(panel1.Width, panel1.Height);
 			using (SaveFileDialog sfd = new SaveFileDialog { Filter = "JPEG files (*.jpg)|*.jpg|All files (*.*)|*.*", RestoreDirectory = true })
