@@ -139,9 +139,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\background.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="if_calendar-2_322422.ico" />
   </ItemGroup>
   <ItemGroup>
