@@ -1,4 +1,4 @@
 # Kreator-Planu
 
 Download compiled version here:
-<a href="kreatorPlanu.zip" download>Click to Download</a>
+<a href="KreatorPlanu.zip" download>Click to Download</a>
